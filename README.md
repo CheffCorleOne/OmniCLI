@@ -502,7 +502,353 @@ Layer 3: Execution Safety
   - Resource usage limits
   - Rollback capability
 ```
-### 15. ИТОГ
+### 15.  Полная структура проекта
+```
+omnicli/
+├── CORE MODULES (Ядро системы)
+│   ├── orchestrator/          # Главный координатор
+│   │   ├── pipeline_manager.py    # Управление пайплайнами
+│   │   ├── workflow_engine.py     # Обработка сложных рабочих процессов
+│   │   └── dependency_resolver.py # Разрешение зависимостей между задачами
+│   │
+│   ├── context/               # Контекстное управление
+│   │   ├── session_manager.py     # Управление сессиями
+│   │   ├── state_snapshot.py      # Снимок состояния системы
+│   │   ├── environment_scanner.py # Сканирование окружения
+│   │   └── history_manager.py     # Управление историей команд
+│   │
+│   └── config/               # Конфигурация
+│       ├── adaptive_config.py     # Адаптивная настройка под железо
+│       ├── profiles/              # Профили для разных сценариев
+│       └── constraints_manager.py # Управление ограничениями
+│
+├── HARDWARE & PERFORMANCE (Аппаратное обеспечение)
+│   ├── detection/            # Детекция железа
+│   │   ├── gpu_detector.py       # Обнаружение GPU
+│   │   ├── cpu_feature_detector.py # Возможности CPU
+│   │   ├── accelerator_scanner.py  # Сканирование ускорителей
+│   │   └── memory_profiler.py     # Профилирование памяти
+│   │
+│   ├── optimization/         # Оптимизация
+│   │   ├── tensor_core_optimizer.py # Использование тензорных ядер
+│   │   ├── mixed_precision_manager.py # Смешанная точность
+│   │   ├── kernel_fusion.py      # Слияние ядер
+│   │   └── memory_optimizer.py   # Оптимизация памяти
+│   │
+│   └── allocation/          # Распределение ресурсов
+│       ├── resource_allocator.py   # Динамическое распределение
+│       ├── load_balancer.py        # Балансировка нагрузки
+│       └── power_manager.py        # Управление энергопотреблением
+│
+├── AI & ML ENGINE (Искусственный интеллект)
+│   ├── models/              # Управление моделями
+│   │   ├── model_loader.py       # Загрузчик моделей
+│   │   ├── model_quantizer.py    # Квантование
+│   │   ├── model_pruner.py       # Прунинг моделей
+│   │   └── registry.py           # Реестр моделей
+│   │
+│   ├── inference/           # Инференс
+│   │   ├── adaptive_inference.py # Адаптивный инференс
+│   │   ├── batch_processor.py    # Пакетная обработка
+│   │   └── streaming_engine.py   # Потоковый инференс
+│   │
+│   └── training/           # Обучение
+│       ├── incremental_trainer.py # Инкрементальное обучение
+│       ├── rl_trainer.py         # Reinforcement Learning
+│       ├── feedback_processor.py  # Обработка обратной связи
+│       └── curriculum_learner.py  # Обучение по сложности
+│
+├── KNOWLEDGE BASE (База знаний)
+│   ├── vector_stores/       # Векторные хранилища
+│   │   ├── faiss_manager.py     # FAISS интеграция
+│   │   ├── qdrant_manager.py    # Qdrant интеграция
+│   │   └── chroma_manager.py    # ChromaDB интеграция
+│   │
+│   ├── indexing/           # Индексация
+│   │   ├── document_parser.py    # Парсинг документов
+│   │   ├── chunking_strategies.py # Стратегии разбиения
+│   │   └── embedding_generator.py # Генерация эмбеддингов
+│   │
+│   ├── retrieval/          # Поиск
+│   │   ├── semantic_retriever.py # Семантический поиск
+│   │   ├── hybrid_search.py      # Гибридный поиск
+│   │   └── relevance_scorer.py   # Оценка релевантности
+│   │
+│   └── sources/           # Источники данных
+│       ├── man_page_crawler.py   # Парсинг man-страниц
+│       ├── documentation_scraper.py # Документация
+│       ├── git_repo_miner.py     # Анализ Git репозиториев
+│       └── system_log_analyzer.py # Анализ логов
+│
+├── NLP PROCESSING (Обработка языка)
+│   ├── understanding/      # Понимание
+│   │   ├── intent_classifier.py  # Классификация намерений
+│   │   ├── entity_extractor.py   # Извлечение сущностей
+│   │   ├── context_analyzer.py   # Анализ контекста
+│   │   └── sentiment_analyzer.py # Анализ настроения
+│   │
+│   ├── generation/         # Генерация
+│   │   ├── command_generator.py  # Генерация команд
+│   │   ├── code_generator.py     # Генерация кода
+│   │   ├── explanation_generator.py # Объяснения
+│   │   └── natural_language_generator.py # Естественный язык
+│   │
+│   └── translation/       # Трансформация
+│       ├── nl_to_bash_translator.py  # NL → Bash
+│       ├── bash_to_nl_translator.py  # Bash → NL
+│       └── cross_platform_adapter.py # Кроссплатформенная адаптация
+│
+├── EXECUTION ENGINE (Исполнение)
+│   ├── safety/            # Безопасность
+│   │   ├── command_validator.py  # Валидация команд
+│   │   ├── sandbox_executor.py   # Песочница
+│   │   ├── permission_manager.py # Управление правами
+│   │   └── risk_assessor.py      # Оценка рисков
+│   │
+│   ├── execution/         # Исполнение
+│   │   ├── shell_executor.py     # Исполнение в shell
+│   │   ├── async_executor.py     # Асинхронное исполнение
+│   │   ├── pipeline_executor.py  # Конвейерное исполнение
+│   │   └── rollback_manager.py   # Управление откатами
+│   │
+│   └── monitoring/        # Мониторинг
+│       ├── resource_monitor.py   # Мониторинг ресурсов
+│       ├── performance_tracker.py # Трекинг производительности
+│       ├── error_detector.py     # Детекция ошибок
+│       └── recovery_manager.py   # Восстановление после сбоев
+│
+├── DATA PIPELINE (Обработка данных)
+│   ├── collection/        # Сбор данных
+│   │   ├── web_scraper.py       # Веб-скрейпинг
+│   │   ├── api_integrations.py  # API интеграции
+│   │   ├── system_telemetry.py  # Телеметрия системы
+│   │   └── user_interaction_logger.py # Логирование взаимодействий
+│   │
+│   ├── processing/        # Обработка
+│   │   ├── data_cleaner.py      # Очистка данных
+│   │   ├── augmentor.py         # Аугментация
+│   │   ├── normalizer.py        # Нормализация
+│   │   └── anonymizer.py        # Анонимизация
+│   │
+│   ├── storage/          # Хранение
+│   │   ├── vector_store_manager.py # Управление векторными БД
+│   │   ├── relational_db.py      # Реляционные БД
+│   │   ├── cache_manager.py      # Кэширование
+│   │   └── backup_manager.py     # Управление бэкапами
+│   │
+│   └── analytics/        # Аналитика
+│       ├── usage_analytics.py    # Анализ использования
+│       ├── performance_analyzer.py # Анализ производительности
+│       ├── pattern_miner.py      # Поиск паттернов
+│       └── recommendation_engine.py # Рекомендательная система
+│
+├── CONTINUOUS LEARNING (Непрерывное обучение)
+│   ├── feedback/         # Обратная связь
+│   │   ├── implicit_feedback_collector.py # Неявная обратная связь
+│   │   ├── explicit_feedback_handler.py   # Явная обратная связь
+│   │   ├── reward_calculator.py           # Расчет наград
+│   │   └── preference_learner.py          # Обучение предпочтениям
+│   │
+│   ├── adaptation/       # Адаптация
+│   │   ├── environment_adapter.py # Адаптация к окружению
+│   │   ├── user_behavior_modeler.py # Моделирование поведения
+│   │   ├── personalization_engine.py # Персонализация
+│   │   └── habit_recognizer.py       # Распознавание привычек
+│   │
+│   └── improvement/      # Улучшение
+│       ├── auto_optimizer.py      # Автооптимизация
+│       ├── bug_detector.py        # Детекция багов
+│       ├── suggestion_generator.py # Генерация предложений
+│       └── knowledge_refiner.py   # Улучшение знаний
+│
+├── SYSTEM INTEGRATION (Интеграция с системой)
+│   ├── filesystem/       # Файловая система
+│   │   ├── file_scanner.py       # Сканирование файлов
+│   │   ├── metadata_extractor.py # Извлечение метаданных
+│   │   ├── content_analyzer.py   # Анализ содержимого
+│   │   └── structure_analyzer.py # Анализ структуры
+│   │
+│   ├── network/          # Сеть
+│   │   ├── network_scanner.py    # Сканирование сети
+│   │   ├── service_discoverer.py # Обнаружение сервисов
+│   │   ├── port_analyzer.py      # Анализ портов
+│   │   └── topology_mapper.py    # Картография топологии
+│   │
+│   ├── processes/        # Процессы
+│   │   ├── process_monitor.py    # Мониторинг процессов
+│   │   ├── dependency_analyzer.py # Анализ зависимостей
+│   │   ├── resource_analyzer.py  # Анализ ресурсов
+│   │   └── anomaly_detector.py   # Детекция аномалий
+│   │
+│   └── packages/         # Пакеты и зависимости
+│       ├── package_manager.py    # Управление пакетами
+│       ├── dependency_resolver.py # Разрешение зависимостей
+│       ├── version_compatibility.py # Совместимость версий
+│       └── vulnerability_scanner.py # Сканирование уязвимостей
+│
+├── CLI & INTERFACE (Интерфейс)
+│   ├── cli/              # CLI интерфейс
+│   │   ├── argument_parser.py    # Парсинг аргументов
+│   │   ├── command_dispatcher.py # Диспетчеризация команд
+│   │   ├── output_formatter.py   # Форматирование вывода
+│   │   └── progress_reporter.py  # Отчет о прогрессе
+│   │
+│   ├── interactive/      # Интерактивный режим
+│   │   ├── chat_interface.py     # Чат-интерфейс
+│   │   ├── autocomplete_engine.py # Автодополнение
+│   │   ├── suggestion_engine.py  # Подсказки
+│   │   └── tutorial_system.py    # Обучение пользователей
+│   │
+│   └── ui/               # Пользовательский интерфейс
+│       ├── tui_builder.py        # TUI (Text UI)
+│       ├── rich_output.py        # Rich вывод
+│       ├── color_scheme_manager.py # Управление цветами
+│       └── accessibility_features.py # Доступность
+│
+├── SECURITY & SAFETY (Безопасность)
+│   ├── security/         # Безопасность
+│   │   ├── threat_detector.py   # Детекция угроз
+│   │   ├── vulnerability_scanner.py # Сканирование уязвимостей
+│   │   ├── encryption_manager.py    # Управление шифрованием
+│   │   └── audit_logger.py          # Аудит-логирование
+│   │
+│   ├── privacy/          # Конфиденциальность
+│   │   ├── data_anonymizer.py   # Анонимизация данных
+│   │   ├── local_storage_only.py # Только локальное хранение
+│   │   ├── permission_prompt.py  # Запрос разрешений
+│   │   └── data_purge_tool.py    # Очистка данных
+│   │
+│   └── compliance/       # Соответствие требованиям
+│       ├── license_compliance.py # Соответствие лицензиям
+│       ├── gdpr_compliance.py    # GDPR соответствие
+│       ├── audit_trail_generator.py # Генерация аудит-трейлов
+│       └── policy_enforcer.py    # Применение политик
+│
+├── PACKAGING & DEPLOYMENT (Упаковка)
+│   ├── packaging/        # Упаковка
+│   │   ├── deb_packager.py      # Сборка .deb пакетов
+│   │   ├── snap_packager.py     # Сборка Snap пакетов
+│   │   ├── docker_builder.py    # Сборка Docker образов
+│   │   └── universal_packager.py # Универсальная упаковка
+│   │
+│   ├── distribution/     # Распространение
+│   │   ├── apt_repository_manager.py # Управление APT репозиторием
+│   │   ├── update_manager.py         # Управление обновлениями
+│   │   ├── version_manager.py        # Управление версиями
+│   │   └── distribution_validator.py # Валидация дистрибутивов
+│   │
+│   └── installation/     # Установка
+│       ├── installer.py           # Инсталлятор
+│       ├── dependency_installer.py # Установка зависимостей
+│       ├── migration_tool.py      # Миграция данных
+│       └── uninstaller.py         # Деинсталлятор
+│
+├── TESTING & QA (Тестирование)
+│   ├── testing/          # Тестирование
+│   │   ├── unit_tests.py         # Юнит-тесты
+│   │   ├── integration_tests.py  # Интеграционные тесты
+│   │   ├── performance_tests.py  # Тесты производительности
+│   │   └── security_tests.py     # Тесты безопасности
+│   │
+│   ├── validation/       # Валидация
+│   │   ├── command_validation_tests.py # Валидация команд
+│   │   ├── model_validation_tests.py   # Валидация моделей
+│   │   ├── edge_case_tester.py         # Тестирование граничных случаев
+│   │   └── regression_tester.py        # Регрессионное тестирование
+│   │
+│   └── quality/          # Качество
+│       ├── code_quality_checker.py # Проверка качества кода
+│       ├── performance_benchmark.py # Бенчмарки производительности
+│       ├── memory_leak_detector.py  # Детектор утечек памяти
+│       └── coverage_analyzer.py     # Анализ покрытия тестами
+│
+└── DOCUMENTATION & UTILS (Документация)
+    ├── documentation/    # Документация
+    │   ├── auto_doc_generator.py # Автогенерация документации
+    │   ├── man_page_generator.py # Генерация man-страниц
+    │   ├── tutorial_generator.py  # Генерация туториалов
+    │   └── api_documentation.py   # Документация API
+    │
+    ├── utils/            # Утилиты
+    │   ├── logging_manager.py     # Управление логированием
+    │   ├── error_handler.py       # Обработка ошибок
+    │   ├── profiler.py            # Профайлер
+    │   └── debug_tools.py         # Отладочные инструменты
+    │
+    └── helpers/          # Вспомогательные функции
+        ├── file_helpers.py        # Помощники для работы с файлами
+        ├── network_helpers.py     # Помощники для работы с сетью
+        ├── system_helpers.py      # Помощники для работы с системой
+        └── data_helpers.py        # Помощники для работы с данными
+```
+### 16. Межмодульные зависимости
+```text
+Пользовательский ввод
+    ↓
+[CLI Module] → Парсинг и валидация
+    ↓
+[Context Module] → Сбор контекста системы
+    ↓
+[NLP Module] → Понимание намерения
+    ↓
+[Knowledge Module] → Поиск релевантной информации
+    ↓
+[AI Engine] → Генерация команды
+    ↓
+[Safety Module] → Проверка безопасности
+    ↓
+[Execution Module] → Исполнение команды
+    ↓
+[Learning Module] → Обучение на результате
+    ↓
+Вывод результата пользователю
+```
+### 17. Зависимости
+```bash
+# Основные
+torch>=2.0.0
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+accelerate>=0.21.0
+bitsandbytes>=0.41.0
+
+# Оптимизация
+onnxruntime>=1.15.0
+openvino>=2023.0.0
+tensorrt>=8.6.0
+
+# Векторные БД
+faiss-cpu>=1.7.4
+qdrant-client>=1.6.0
+chromadb>=0.4.0
+
+# Системная интеграция
+psutil>=5.9.0
+py-cpuinfo>=9.0.0
+GPUtil>=1.4.0
+netifaces>=0.11.0
+
+# CLI & UI
+rich>=13.4.0
+click>=8.1.0
+prompt-toolkit>=3.0.0
+tqdm>=4.65.0
+
+# Безопасность
+python-jose>=3.3.0
+cryptography>=41.0.0
+
+# Тестирование
+pytest>=7.4.0
+pytest-benchmark>=4.0.0
+hypothesis>=6.85.0
+
+# Утилиты
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+```
+### 18. ИТОГ
 
     OmniCLI - это интеллектуальное расширение ОС, которое:
 
