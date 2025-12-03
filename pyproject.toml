@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling>=1.21.1"]
+build-backend = "hatchling.build"
+
+[project]
+name = "omnicli"
+version = "0.1.0"
+description = "Adaptive offline AI terminal agent for systems administrators."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [
+  { name = "OmniCLI Team" }
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Intended Audience :: System Administrators",
+  "Topic :: System :: Systems Administration",
+]
+dependencies = [
+  "pydantic>=2.5",
+  "pydantic-settings>=2.1",
+  "psutil>=5.9",
+  "typer>=0.12",
+  "rich>=13.4",
+  "py-cpuinfo>=9.0",
+  "GPUtil>=1.4",
+  "numpy>=1.24",
+  "scikit-learn>=1.3",
+  "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+ai = [
+  "torch>=2.0",
+  "transformers>=4.30",
+  "accelerate>=0.21",
+  "bitsandbytes>=0.41",
+  "onnxruntime>=1.15",
+  "sentence-transformers>=2.2",
+]
+vector = [
+  "faiss-cpu>=1.7.4",
+  "qdrant-client>=1.6",
+  "chromadb>=0.4",
+  "netifaces>=0.11",
+]
+security = [
+  "python-jose>=3.3",
+  "cryptography>=41.0",
+]
+testing = [
+  "pytest>=7.4",
+  "pytest-benchmark>=4.0",
+  "hypothesis>=6.85",
+]
+
+[project.scripts]
+omnicli = "omnicli.cli.main:app"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = [
+  "tests",
+]
+
