@@ -1,6 +1,6 @@
 # OmniCLI – Offline AI Terminal Assistant
 
-OmniCLI is an adaptive AI agent that lives inside a Linux terminal and helps systems administrators translate natural-language intents into safe, optimized shell workflows. The project follows the OmniCLI v1.0 specification (02 Dec 2025) and is delivered as an offline-first CLI application that automatically adapts to the host hardware, understands the surrounding system context, and continuously learns from prior interactions.
+OmniCLI is an adaptive AI agent that lives inside a Linux terminal and helps systems administrators translate natural-language intents into safe, optimized shell workflows. The project follows the OmniCLI v1.0 (techscpecs.md) (02 Dec 2025) and is delivered as an offline-first CLI application that automatically adapts to the host hardware, understands the surrounding system context, and continuously learns from prior interactions.
 
 ## Vision
 
