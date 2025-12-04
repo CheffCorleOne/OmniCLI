@@ -47,14 +47,14 @@ Run the CLI:
 
 ```bash
 omnicli --help
-omnicli run "сделай резервную копию проектов и отправь на сервер"
+omnicli "сделай резервную копию проектов и отправь на сервер"
 ```
 
 During early development most subsystems emit structured traces rather than executing destructive commands. The `--dry-run` flag (default) ensures only simulated plans are produced.
 
 ## Execution Stages & Logging
 
-Every `omnicli run "<intent>"` request проходит через явные стадии:
+Every `omnicli "<intent>"` request проходит через явные стадии:
 
 1. **Hardware discovery** – сбор краткого профиля железа (`HardwareProfile`).  
 2. **System snapshot** – снимок окружения (`SystemSnapshot`: пользователи, env, далее процессы/сервисы и т.д.).  
